@@ -43,6 +43,12 @@ public class HomeController {
         return "/listarreservas";
     }
 
+    @GetMapping("/clientes")
+    public String clientes(){
+        return "/clientes";
+    }
+
+
     @GetMapping("/editarReserva/{idReserva}")
     public String editarReserva(@PathVariable Long idReserva, Model model){
         Reservas reserva = reservasRepository.findById(idReserva).orElseThrow();
@@ -69,4 +75,6 @@ public class HomeController {
         reservasRepository.deleteById(idReserva);
         return "redirect:/listarReservas";
     }
+
+    
 }
