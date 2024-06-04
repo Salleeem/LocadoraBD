@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reservas</title>
+    <link rel="stylesheet" href="/css/liststyle.css">
+</head>
+<body>
+    <div class="main-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Modelo do Carro</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Local de Retirada</th>
+                    <th>Data de Retirada</th>
+                    <th>Data de Devolução</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reserva : ${reservas}">
+                    <td th:text="${reserva.idReserva}"></td>
+                    <td th:text="${reserva.nome}"></td>
+                    <td th:text="${reserva.modeloCarro}"></td>
+                    <td th:text="${reserva.telefone}"></td>
+                    <td th:text="${reserva.email}"></td>
+                    <td th:text="${reserva.localRetirada}"></td>
+                    <td th:text="${reserva.dataRetirada}"></td>
+                    <td th:text="${reserva.dataDevolu}"></td>
+                    <td>
+                        <a th:href="@{/editarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
+                            <i class="fas fa-pencil-alt">edit</i>
+                        </a>
+                        <a th:href="@{/deletarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
+                            <i class="fas fa-times">del</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

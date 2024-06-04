@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="/css/liststyle.css">
+</head>
+<body>
+    <div class="main-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Data de Nascimento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.idCliente}"></td>
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                    <td th:text="${cliente.endereco}"></td>
+                    <td th:text="${cliente.dataNas}"></td>
+                    <td>
+                        <a th:href="@{/editarCliente/{idCliente}(idCliente=${cliente.idCliente})}">
+                            <i class="fas fa-pencil-alt">edit</i>
+                        </a>
+                        <a th:href="@{/deletarCliente/{idCliente}(idCliente=${cliente.idCliente})}">
+                            <i class="fas fa-times">del</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
