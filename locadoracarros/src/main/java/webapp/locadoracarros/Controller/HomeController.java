@@ -59,10 +59,7 @@ public class HomeController {
     @PostMapping("/editarReserva/{idReserva}")
     public String editarReserva(@PathVariable Long idReserva, @ModelAttribute Reservas reserva){
         Reservas reservaToUpdate = reservasRepository.findById(idReserva).orElseThrow();
-        reservaToUpdate.setNome(reserva.getNome());
         reservaToUpdate.setModeloCarro(reserva.getModeloCarro());
-        reservaToUpdate.setTelefone(reserva.getTelefone());
-        reservaToUpdate.setEmail(reserva.getEmail());
         reservaToUpdate.setLocalRetirada(reserva.getLocalRetirada());
         reservaToUpdate.setDataRetirada(reserva.getDataRetirada());
         reservaToUpdate.setDataDevolu(reserva.getDataDevolu());

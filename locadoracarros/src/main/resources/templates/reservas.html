@@ -19,24 +19,17 @@
                 <div class="form-container">
                     <form action="/reservarCarro" method="post" class="login login-left">
                         <div class="login__field">
-                            <i class="login__icon fas fa-user"></i>
-                            <input type="text" id="nome" name="nome" class="login__input" placeholder="Nome Completo" required>
+                            <label for="cliente">Cliente:</label>
+                            <select id="cliente" name="cliente" class="login__input" required>
+                                <option value="" disabled selected>Selecione um cliente</option>
+                                <!-- Verifique se a sintaxe Thymeleaf está correta aqui -->
+                                <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                            </select>
+                            
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-car"></i>
                             <input type="text" id="modeloCarro" name="modeloCarro" class="login__input" placeholder="Modelo do Carro" required>
-                        </div>
-                        <div class="login__field">
-                           <i class="login__icon fas fa-phone" aria-hidden="true"></i>
-                            <input type="tel" id="telefone" name="telefone" class="login__input" placeholder="Telefone" required>
-                        </div>
-                        <div class="login__field">
-                            <i class="login__icon fa fa-address-card"></i>
-                            <input type="text" id="cpf" name="cpf" class="login__input" placeholder="CPF" required>
-                        </div>
-                        <div class="login__field">
-                            <i class="login__icon fas fa-envelope"></i>
-                            <input type="email" id="email" name="email" class="login__input" placeholder="Endereço de Email" required>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fa fa-home"></i>
