@@ -16,8 +16,9 @@ public class Reservas implements Serializable  {
     private long idReserva;
 
     private String modeloCarro;
-    @ManyToOne // Indica que esta é uma relação muitos-para-um
-    private Clientes cliente; // Adiciona um campo para referenciar o Cliente
+    
+    @ManyToOne
+    private Clientes cliente;
 
     private String localRetirada;
     private Date dataRetirada;
@@ -31,7 +32,6 @@ public class Reservas implements Serializable  {
         this.idReserva = idReserva;
     }
 
-
     public String getModeloCarro() {
         return modeloCarro;
     }
@@ -40,6 +40,13 @@ public class Reservas implements Serializable  {
         this.modeloCarro = modeloCarro;
     }
 
+    public Clientes getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
+    }
 
     public String getLocalRetirada() {
         return localRetirada;

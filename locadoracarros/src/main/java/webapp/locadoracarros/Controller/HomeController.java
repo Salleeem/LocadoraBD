@@ -48,6 +48,12 @@ public class HomeController {
         return "/clientes";
     }
 
+    @GetMapping("/carros")
+    public String carros() {
+        return "/carros";
+    }
+    
+
 
     @GetMapping("/editarReserva/{idReserva}")
     public String editarReserva(@PathVariable Long idReserva, Model model){

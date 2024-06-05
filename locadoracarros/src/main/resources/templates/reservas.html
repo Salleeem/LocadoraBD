@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +22,8 @@
                             <label for="cliente">Cliente:</label>
                             <select id="cliente" name="cliente" class="login__input" required>
                                 <option value="" disabled selected>Selecione um cliente</option>
-                                <!-- Verifique se a sintaxe Thymeleaf está correta aqui -->
-                                <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                                <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nome}"></option>
                             </select>
-                            
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-car"></i>
