@@ -10,14 +10,6 @@
     <div class="main-content">
         <h1>Editar Reserva</h1>
         <form th:object="${reserva}" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" th:field="*{nome}"><br><br>
-            <label for="modeloCarro">Modelo do Carro:</label>
-            <input type="text" id="modeloCarro" th:field="*{modeloCarro}"><br><br>
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" th:field="*{telefone}"><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" th:field="*{email}"><br><br>
             <label for="localRetirada">Local de Retirada:</label>
             <input type="text" id="localRetirada" th:field="*{localRetirada}"><br><br>
             <label for="dataRetirada">Data de Retirada:</label>

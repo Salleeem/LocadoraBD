@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Cliente</title>
+    <title>Editar Reserva</title>
     <link rel="stylesheet" href="/css/liststyle.css">
 </head>
 <body>
     <div class="main-content">
-        <h1>Editar Cliente</h1>
-        <form th:object="${cliente}" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" th:field="*{nome}"><br><br>
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" th:field="*{cpf}"><br><br>
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" th:field="*{telefone}"><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" th:field="*{email}"><br><br>
-            <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" th:field="*{endereco}"><br><br>
-            <label for="dataNascimento">Data de Nascimento:</label>
-            <input type="date" id="dataNas" th:field="*{dataNas}"><br><br>
+        <h1>Editar Reserva</h1>
+        <form th:object="${reserva}" method="post">
+            <label for="localRetirada">Local de Retirada:</label>
+            <input type="text" id="localRetirada" th:field="*{localRetirada}"><br><br>
+            <label for="dataRetirada">Data de Retirada:</label>
+            <input type="date" id="dataRetirada" th:field="*{dataRetirada}"><br><br>
+            <label for="dataDevolu">Data de Devolução:</label>
+            <input type="date" id="dataDevolu" th:field="*{dataDevolu}"><br><br>
             <input type="submit" value="Salvar Alterações">
         </form>
     </div>

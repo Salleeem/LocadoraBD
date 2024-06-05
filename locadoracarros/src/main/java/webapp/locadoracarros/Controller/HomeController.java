@@ -1,18 +1,10 @@
 package webapp.locadoracarros.Controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.bind.annotation.*;
 import webapp.locadoracarros.Model.Reservas;
 import webapp.locadoracarros.Repository.ReservasRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -30,7 +22,7 @@ public class HomeController {
 
     @GetMapping("/reservas")
     public String reservas() {
-        return "reservas";
+        return "redirect:/reservarCarro";
     }
 
     @GetMapping("/sucesso")
@@ -39,45 +31,43 @@ public class HomeController {
     }
 
     @GetMapping("/listarreservas")
-    public String listarreservas() {
-        return "/listarreservas";
+    public String listarreservas(Model model) {
+        model.addAttribute("reservas", reservasRepository.findAll());
+        return "listarreservas";
     }
 
     @GetMapping("/clientes")
-    public String clientes(){
-        return "/clientes";
+    public String clientes() {
+        return "clientes";
     }
 
     @GetMapping("/carros")
     public String carros() {
-        return "/carros";
+        return "carros";
     }
-    
-
 
     @GetMapping("/editarReserva/{idReserva}")
-    public String editarReserva(@PathVariable Long idReserva, Model model){
+    public String editarReserva(@PathVariable Long idReserva, Model model) {
         Reservas reserva = reservasRepository.findById(idReserva).orElseThrow();
         model.addAttribute("reserva", reserva);
-        return "editarReserva";
+        return "editarreserva";
     }
 
     @PostMapping("/editarReserva/{idReserva}")
-    public String editarReserva(@PathVariable Long idReserva, @ModelAttribute Reservas reserva){
-        Reservas reservaToUpdate = reservasRepository.findById(idReserva).orElseThrow();
-        reservaToUpdate.setModeloCarro(reserva.getModeloCarro());
-        reservaToUpdate.setLocalRetirada(reserva.getLocalRetirada());
-        reservaToUpdate.setDataRetirada(reserva.getDataRetirada());
-        reservaToUpdate.setDataDevolu(reserva.getDataDevolu());
-        reservasRepository.save(reservaToUpdate);
-        return "redirect:/listarReservas";
-    }
+public String editarReservaPost(@PathVariable Long idReserva, @ModelAttribute Reservas reserva) {
+    Reservas reservaToUpdate = reservasRepository.findById(idReserva).orElseThrow();
+    // Atualize apenas os campos que você deseja que sejam editáveis
+    reservaToUpdate.setLocalRetirada(reserva.getLocalRetirada());
+    reservaToUpdate.setDataRetirada(reserva.getDataRetirada());
+    reservaToUpdate.setDataDevolu(reserva.getDataDevolu());
+    reservasRepository.save(reservaToUpdate);
+    return "redirect:/listarreservas";
+}
+
 
     @GetMapping("/deletarReserva/{idReserva}")
-    public String deletarReserva(@PathVariable Long idReserva){
+    public String deletarReserva(@PathVariable Long idReserva) {
         reservasRepository.deleteById(idReserva);
-        return "redirect:/listarReservas";
+        return "redirect:/listarreservas";
     }
-
-    
 }

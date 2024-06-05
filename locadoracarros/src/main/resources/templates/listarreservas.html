@@ -25,19 +25,19 @@
             <tbody>
                 <tr th:each="reserva : ${reservas}">
                     <td th:text="${reserva.idReserva}"></td>
-                    <td th:text="${reserva.nome}"></td>
-                    <td th:text="${reserva.modeloCarro}"></td>
-                    <td th:text="${reserva.telefone}"></td>
-                    <td th:text="${reserva.email}"></td>
+                    <td th:text="${reserva.cliente.nome}"></td>
+                    <td th:text="${reserva.carro.modelo}"></td>
+                    <td th:text="${reserva.cliente.telefone}"></td>
+                    <td th:text="${reserva.cliente.email}"></td>
                     <td th:text="${reserva.localRetirada}"></td>
-                    <td th:text="${reserva.dataRetirada}"></td>
-                    <td th:text="${reserva.dataDevolu}"></td>
+                    <td th:text="${#dates.format(reserva.dataRetirada, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(reserva.dataDevolu, 'dd/MM/yyyy')}"></td>
                     <td>
                         <a th:href="@{/editarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
-                            <i class="fas fa-pencil-alt">edit</i>
+                            <i class="fas fa-pencil-alt"></i> Editar
                         </a>
                         <a th:href="@{/deletarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
-                            <i class="fas fa-times">del</i>
+                            <i class="fas fa-times"></i> Excluir
                         </a>
                     </td>
                 </tr>

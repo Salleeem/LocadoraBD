@@ -7,23 +7,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Reservas implements Serializable  {
+public class Reservas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idReserva;
 
-    private String modeloCarro;
+    @ManyToOne
+    @JoinColumn(name = "idCarro") 
+    private Carros carro;
     
     @ManyToOne
+    @JoinColumn(name = "idCliente") 
     private Clientes cliente;
 
     private String localRetirada;
     private Date dataRetirada;
     private Date dataDevolu;
 
+    // Getters and setters
     public long getIdReserva() {
         return idReserva;
     }
@@ -32,12 +37,12 @@ public class Reservas implements Serializable  {
         this.idReserva = idReserva;
     }
 
-    public String getModeloCarro() {
-        return modeloCarro;
+    public Carros getCarro() {
+        return carro;
     }
 
-    public void setModeloCarro(String modeloCarro) {
-        this.modeloCarro = modeloCarro;
+    public void setCarro(Carros carro) {
+        this.carro = carro;
     }
 
     public Clientes getCliente() {
@@ -71,4 +76,6 @@ public class Reservas implements Serializable  {
     public void setDataDevolu(Date dataDevolu) {
         this.dataDevolu = dataDevolu;
     }
+
+    
 }

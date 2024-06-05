@@ -1,10 +1,10 @@
 package webapp.locadoracarros.Repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
 import webapp.locadoracarros.Model.Reservas;
 
-public interface ReservasRepository extends JpaRepository<Reservas, Long>{
-
-    
+public interface ReservasRepository extends CrudRepository<Reservas, Long> {
+    List<Reservas> findAll();
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/restyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <div class="voltar">
         <a href="/"><i class="fas fa-arrow-left fa-3x"></i></a>
@@ -22,24 +24,32 @@
                             <label for="cliente">Cliente:</label>
                             <select id="cliente" name="cliente" class="login__input" required>
                                 <option value="" disabled selected>Selecione um cliente</option>
-                                <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nome}"></option>
+                                <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}"
+                                    th:text="${cliente.nome}"></option>
                             </select>
                         </div>
                         <div class="login__field">
-                            <i class="login__icon fas fa-car"></i>
-                            <input type="text" id="modeloCarro" name="modeloCarro" class="login__input" placeholder="Modelo do Carro" required>
+                            <label for="carro">Carro:</label>
+                            <select id="carro" name="carro" class="login__input" required>
+                                <option value="" disabled selected>Selecione um carro</option>
+                                <option th:each="carro : ${carros}" th:value="${carro.idCarro}"
+                                    th:text="${carro.modelo}"></option>
+                            </select>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fa fa-home"></i>
-                            <input type="text" id="localRetirada" name="localRetirada" class="login__input" placeholder="Local de Retirada" required>
+                            <input type="text" id="localRetirada" name="localRetirada" class="login__input"
+                                placeholder="Local de Retirada" required>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-calendar-alt"></i>
-                            <input type="date" id="dataRetirada" name="dataRetirada" class="login__input" placeholder="Data de Retirada" required>
+                            <input type="date" id="dataRetirada" name="dataRetirada" class="login__input"
+                                placeholder="Data de Retirada" required>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-calendar-alt"></i>
-                            <input type="date" id="dataDevolu" name="dataDevolu" class="login__input" placeholder="Data de Devolução" required>
+                            <input type="date" id="dataDevolu" name="dataDevolu" class="login__input"
+                                placeholder="Data de Devolução" required>
                         </div>
                         <button class="button login__submit">
                             <span class="button__text">Reservar Agora</span>
@@ -50,11 +60,12 @@
             </div>
             <div class="screen__background">
                 <span class="screen__background__shape screen__background__shape4"></span>
-                <span class="screen__background__shape screen__background__shape3"></span>      
+                <span class="screen__background__shape screen__background__shape3"></span>
                 <span class="screen__background__shape screen__background__shape2"></span>
                 <span class="screen__background__shape screen__background__shape1"></span>
-            </div>      
+            </div>
         </div>
     </div>
 </body>
+
 </html>
