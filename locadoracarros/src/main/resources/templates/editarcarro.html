@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Carro</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Adicione o caminho correto para o seu arquivo CSS -->
+</head>
+<body>
+    <div class="main-content">
+        <h1>Editar Carro</h1>
+        <form th:object="${carro}" method="post">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" th:field="*{modelo}"><br><br>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" th:field="*{placa}"><br><br>
+            <label for="ano">Ano:</label>
+            <input type="number" id="ano" th:field="*{ano}"><br><br>
+            <label for="cor">Cor:</label>
+            <input type="text" id="cor" th:field="*{cor}"><br><br>
+            <input type="submit" value="Salvar Alterações">
+        </form>
+    </div>
+</body>
+</html>

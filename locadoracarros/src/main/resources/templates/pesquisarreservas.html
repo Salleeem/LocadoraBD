@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisar Reservas</title>
+    <link rel="stylesheet" href="/css/pesstyle.css">
+    <script th:src="@{/js/popup.js}" defer></script>
+</head>
+<body>
+
+<h2>Pesquisar Reservas</h2>
+
+<form action="#" method="post" onsubmit="return validateForm()">
+    <label for="cpf">Pesquisar por CPF:</label>
+    <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
+    <button type="submit">Pesquisar</button>
+</form>
+
+<form action="#" method="post" onsubmit="return validateForm()">
+    <label for="modelo">Pesquisar por Modelo de Carro:</label>
+    <input type="text" id="modelo" name="modelo" placeholder="Digite o modelo do carro...">
+    <button type="submit">Pesquisar</button>
+</form>
+
+<!-- Resultados da Pesquisa por CPF -->
+<div th:if="${not #lists.isEmpty(reservasPorCpf)}">
+    <h3>Resultados da Pesquisa para o CPF: <span th:text="${#strings.isEmpty(cpfPesquisado) ? 'Não especificado' : cpfPesquisado}"></span></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Carro</th>
+            <th>Data de Início</th>
+            <th>Data de Fim</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reserva : ${reservasPorCpf}">
+            <td th:text="${reserva.idReserva}"></td>
+            <td th:text="${reserva.cliente.nome}"></td>
+            <td th:text="${reserva.carro.modelo}"></td>
+            <td th:text="${reserva.dataRetirada}"></td>
+            <td th:text="${reserva.dataDevolu}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Resultados da Pesquisa por Modelo de Carro -->
+<div th:if="${not #lists.isEmpty(reservasPorModelo)}">
+    <h3>Resultados da Pesquisa  para o Modelo: <span th:text="${#strings.isEmpty(modeloPesquisado) ? 'Não especificado' : modeloPesquisado}"></span></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Carro</th>
+            <th>Data de Início</th>
+            <th>Data de Fim</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reserva : ${reservasPorModelo}">
+            <td th:text="${reserva.idReserva}"></td>
+            <td th:text="${reserva.cliente.nome}"></td>
+            <td th:text="${reserva.carro.modelo}"></td>
+            <td th:text="${reserva.dataRetirada}"></td>
+            <td th:text="${reserva.dataDevolu}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Pop-up -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>Nenhum resultado encontrado ou campo vazio.</p>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var cpf = document.getElementById("cpf").value;
+        var modelo = document.getElementById("modelo").value;
+
+        if (cpf.trim() === "" && modelo.trim() === "") {
+            openPopup();
+            return false;
+        }
+    }
+
+    function openPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

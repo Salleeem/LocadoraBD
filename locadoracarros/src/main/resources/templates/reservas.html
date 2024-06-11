@@ -21,7 +21,6 @@
                 <div class="form-container">
                     <form action="/reservarCarro" method="post" class="login login-left">
                         <div class="login__field">
-                            <label for="cliente">Cliente:</label>
                             <select id="cliente" name="cliente" class="login__input" required>
                                 <option value="" disabled selected>Selecione um cliente</option>
                                 <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}"
@@ -29,7 +28,6 @@
                             </select>
                         </div>
                         <div class="login__field">
-                            <label for="carro">Carro:</label>
                             <select id="carro" name="carro" class="login__input" required>
                                 <option value="" disabled selected>Selecione um carro</option>
                                 <option th:each="carro : ${carros}" th:value="${carro.idCarro}"

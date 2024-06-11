@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Carros</title>
+    <link rel="stylesheet" href="/css/liststyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <div class="voltar">
+        <a href="/"><i class="fas fa-arrow-left fa-3x"></i></a>
+    </div>
+
+    
+    <div class="main-content">
+
+        
+        <h1>Listagem de Carros</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Placa</th>
+                    <th>Ano</th>
+                    <th>Cor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="carro : ${carros}">
+                    <td th:text="${carro.modelo}"></td>
+                    <td th:text="${carro.placa}"></td>
+                    <td th:text="${carro.ano}"></td>
+                    <td th:text="${carro.cor}"></td>
+                    <td>
+                        <a th:href="@{/editarcarro/{idCarro}(idCarro=${carro.idCarro})}">Editar</a> |
+                        <a th:href="@{/deletarcarro/{idCarro}(idCarro=${carro.idCarro})}">Deletar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
     <link rel="stylesheet" href="/css/liststyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
+    <div class="voltar">
+        <a href="/"><i class="fas fa-arrow-left fa-3x"></i></a>
+    </div>
+
+    
     <div class="main-content">
+
+       
+
+        <h1>Lista de Clientes</h1>
         <table>
             <thead>
                 <tr>
@@ -15,8 +26,8 @@
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>Email</th>
-                    <th>Telefone</th>
                     <th>Endereço</th>
+                    <th>Telefone</th>
                     <th>Data de Nascimento</th>
                     <th>Ações</th>
                 </tr>
@@ -27,16 +38,12 @@
                     <td th:text="${cliente.nome}"></td>
                     <td th:text="${cliente.cpf}"></td>
                     <td th:text="${cliente.email}"></td>
-                    <td th:text="${cliente.telefone}"></td>
                     <td th:text="${cliente.endereco}"></td>
+                    <td th:text="${cliente.telefone}"></td>
                     <td th:text="${cliente.dataNas}"></td>
                     <td>
-                        <a th:href="@{/editarCliente/{idCliente}(idCliente=${cliente.idCliente})}">
-                            <i class="fas fa-pencil-alt">edit</i>
-                        </a>
-                        <a th:href="@{/deletarCliente/{idCliente}(idCliente=${cliente.idCliente})}">
-                            <i class="fas fa-times">del</i>
-                        </a>
+                        <a th:href="@{/editarcliente/{idCliente}(idCliente=${cliente.idCliente})}">Editar</a> |
+                        <a th:href="@{/deletarcliente/{idCliente}(idCliente=${cliente.idCliente})}">Deletar</a>
                     </td>
                 </tr>
             </tbody>

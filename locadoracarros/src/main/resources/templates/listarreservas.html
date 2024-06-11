@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Reservas</title>
     <link rel="stylesheet" href="/css/liststyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
+    <div class="voltar">
+        <a href="/"><i class="fas fa-arrow-left fa-3x"></i></a>
+    </div>
+
+
     <div class="main-content">
+
+        
         <table>
             <thead>
                 <tr>
@@ -33,9 +42,9 @@
                     <td th:text="${#dates.format(reserva.dataRetirada, 'dd/MM/yyyy')}"></td>
                     <td th:text="${#dates.format(reserva.dataDevolu, 'dd/MM/yyyy')}"></td>
                     <td>
-                        <a th:href="@{/editarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
+                        <a th:href="@{/editarReserva/{idReserva}(idReserva=${reserva.idReserva})}"> 
                             <i class="fas fa-pencil-alt"></i> Editar
-                        </a>
+                        </a> !
                         <a th:href="@{/deletarReserva/{idReserva}(idReserva=${reserva.idReserva})}">
                             <i class="fas fa-times"></i> Excluir
                         </a>

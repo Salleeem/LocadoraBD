@@ -30,6 +30,16 @@ public class HomeController {
         return "sucesso";
     }
 
+    @GetMapping("/sucessocar")
+    public String sucessocar() {
+        return "sucessocar";
+    }
+
+    @GetMapping("/sucessocli")
+    public String sucessocli() {
+        return "sucessocli";
+    }
+
     @GetMapping("/listarreservas")
     public String listarreservas(Model model) {
         model.addAttribute("reservas", reservasRepository.findAll());
@@ -49,7 +59,7 @@ public class HomeController {
     @GetMapping("/editarReserva/{idReserva}")
     public String editarReserva(@PathVariable Long idReserva, Model model) {
         Reservas reserva = reservasRepository.findById(idReserva).orElseThrow();
-        model.addAttribute("reserva", reserva);
+        model.addAttribute("reserva", reserva); 
         return "editarreserva";
     }
 
