@@ -5,8 +5,18 @@
     <title>Pesquisar Reservas</title>
     <link rel="stylesheet" href="/css/pesstyle.css">
     <script th:src="@{/js/popup.js}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-No-Background.png" type="image/x-icon"> 
 </head>
 <body>
+
+    <div class="voltar">
+        <a href="/"><i class="fas fa-arrow-left fa-3x"></i></a>
+    </div>
+
+    <form th:action="@{/limparPesquisa}" method="get">
+        <button type="submit" class="btn btn-primary">Limpar Pesquisa</button>
+    </form>
 
 <h2>Pesquisar Reservas</h2>
 
@@ -21,6 +31,18 @@
     <input type="text" id="modelo" name="modelo" placeholder="Digite o modelo do carro...">
     <button type="submit">Pesquisar</button>
 </form>
+
+ <!-- Formulário para pesquisar reservas -->
+ <form th:action="@{/calcularReceita}" method="get">
+    <label>Data de Início:</label>
+    <input type="date" name="dataInicio" th:value="${dataInicio != null} ? ${#temporals.format(dataInicio, 'yyyy-MM-dd')} : ''" required>
+    
+    <label>Data de Fim:</label>
+    <input type="date" name="dataFim" th:value="${dataFim != null} ? ${#temporals.format(dataFim, 'yyyy-MM-dd')} : ''" required>
+    
+    <button type="submit" class="btn btn-primary">Pesquisar</button>
+</form>
+
 
 <!-- Resultados da Pesquisa por CPF -->
 <div th:if="${not #lists.isEmpty(reservasPorCpf)}">
@@ -49,7 +71,7 @@
 
 <!-- Resultados da Pesquisa por Modelo de Carro -->
 <div th:if="${not #lists.isEmpty(reservasPorModelo)}">
-    <h3>Resultados da Pesquisa  para o Modelo: <span th:text="${#strings.isEmpty(modeloPesquisado) ? 'Não especificado' : modeloPesquisado}"></span></h3>
+    <h3>Resultados da Pesquisa para o Modelo: <span th:text="${#strings.isEmpty(modeloPesquisado) ? 'Não especificado' : modeloPesquisado}"></span></h3>
     <table>
         <thead>
         <tr>
@@ -71,6 +93,15 @@
         </tbody>
     </table>
 </div>
+
+<div th:if="${receitaTotal != null}">
+    <h3 th:text="'Receita Total entre as datas especificadas: ' + ${#temporals.format(dataInicio, 'dd/MM/yyyy')} + ' e ' + ${#temporals.format(dataFim, 'dd/MM/yyyy')}">
+        Receita total entre as datas xx/xx/xxxx e xx/xx/xxxx
+    </h3>
+    <h3>Receita Total: <span th:text="${receitaTotal}"></span></h3>
+</div>
+
+
 
 <!-- Pop-up -->
 <div id="popup" class="popup">

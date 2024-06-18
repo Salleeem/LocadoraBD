@@ -6,6 +6,7 @@
     <title>Lista de Reservas</title>
     <link rel="stylesheet" href="/css/liststyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-No-Background.png" type="image/x-icon"> 
 </head>
 <body>
 
@@ -24,7 +25,7 @@
                     <th>Nome</th>
                     <th>Modelo do Carro</th>
                     <th>Telefone</th>
-                    <th>Email</th>
+                    <th>Valor</th>
                     <th>Local de Retirada</th>
                     <th>Data de Retirada</th>
                     <th>Data de Devolução</th>
@@ -37,7 +38,7 @@
                     <td th:text="${reserva.cliente.nome}"></td>
                     <td th:text="${reserva.carro.modelo}"></td>
                     <td th:text="${reserva.cliente.telefone}"></td>
-                    <td th:text="${reserva.cliente.email}"></td>
+                    <td th:text="${reserva.carro.valor}"></td>
                     <td th:text="${reserva.localRetirada}"></td>
                     <td th:text="${#dates.format(reserva.dataRetirada, 'dd/MM/yyyy')}"></td>
                     <td th:text="${#dates.format(reserva.dataDevolu, 'dd/MM/yyyy')}"></td>

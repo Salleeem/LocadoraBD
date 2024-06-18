@@ -1,5 +1,6 @@
 package webapp.locadoracarros.Repository;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +14,6 @@ public interface ReservasRepository extends CrudRepository<Reservas, Long> {
     
     @Query("SELECT r FROM Reservas r WHERE r.carro.modelo = :modelo")
     List<Reservas> findByCarroModelo(@Param("modelo") String modelo);
-
+    List<Reservas> findByDataRetiradaBetween(Date dataInicio, Date dataFim);
     
 }

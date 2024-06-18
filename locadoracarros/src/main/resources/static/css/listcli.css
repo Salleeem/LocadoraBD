@@ -41,10 +41,11 @@ th, td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #dddddd;
+    color: fff;
 }
 
 th {
-    background-color: #000000;
+    background-color: #16495f;
     color: #fff;
 }
 
